@@ -4,3 +4,5 @@
 *.pyc
 # ignore db.sqlite3
 db.sqlite3
+# ignore migration files
+blog/migrations/*.py
