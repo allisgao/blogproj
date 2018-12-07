@@ -2,3 +2,5 @@
 .idea/
 # ignore python complied files
 *.pyc
+# ignore db.sqlite3
+db.sqlite3
