@@ -7,14 +7,12 @@ Tag： 标签
 Post： 文章
 """
 
-class Catagory(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=100)
 
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
-
-
 
 
 class Post(models.Model):
@@ -29,13 +27,10 @@ class Post(models.Model):
     excerpt = models.CharField(max_length=200, blank=True)
     # 分类和标签。这里，规定一篇文章只能有一个分类，但可以有多个标签。
     ## 分类。一篇文章只有一个分类，一个分类下可以有多篇文章
-    category = models.ForeignKey(Categroy)
+    category = models.ForeignKey(Category)
     ## 标签。一篇文章可以有多个分类，一个分类下也可以有多篇文章
     tags = models.ManyToManyField(Tag, blank=True)
     # 作者。
     author = models.ForeignKey(User)
-
-
-
 
 
