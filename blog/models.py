@@ -9,11 +9,14 @@ Post： 文章
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
 
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
-
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     # 标题
@@ -33,4 +36,5 @@ class Post(models.Model):
     # 作者。
     author = models.ForeignKey(User)
 
-
+    def __str__(self):
+        return self.title
