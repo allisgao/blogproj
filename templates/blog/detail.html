@@ -56,7 +56,8 @@
                                 <span class="nickname">{{ comment.name }}</span>
                                 <time class="submit-date" datetime="2012-11-09T23:15:57+00:00">{{ comment.created_time }}</time>
                                 <div class="text">
-                                    {{ comment.text|safe }}
+                                    {{ comment.text }}
+{#                                    {{ comment.text|safe }}#}
                                 </div>
                             </li>
                             {% empty %}
