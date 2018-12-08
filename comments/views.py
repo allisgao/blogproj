@@ -31,5 +31,6 @@ def post_comment(request, post_pk):
             }
 
             return render(request, 'blog/detail.html', context=context)
+            # redirect(post)
     return redirect(post)
 
