@@ -50,7 +50,7 @@ def archives(request, year, month):
                                     # Python 中类实例调用属性的方法通常是 created_time.year，\
                                     # 但是由于这里作为函数的参数列表，所以 Django 要求我们把点替换成了两个下划线，即 created_time__year。
                                     created_time__month=month,
-                                    ).order_by('-created_time')
+                                    )
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
 

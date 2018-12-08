@@ -15,3 +15,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text[:20]
+
+    class Meta:
+        ordering = ['-created_time']
