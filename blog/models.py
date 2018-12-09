@@ -36,14 +36,22 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
     # 作者。
     author = models.ForeignKey(User)
+    # page view文章页面浏览次数
+    p_views = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.title
+        if len(self.title) > 25:
+            return self.title[:25] + "..."
+        else:
+            return self.title
+
     def get_absolute_url(self):
         # 自定义 get_absolute_url 方法
         # 记得从 django.urls 中导入 reverse 函数
         return reverse('blog:detail', kwargs={'pk': self.pk})
-
+    def increase_views(self):
+        self.p_views += 1
+        self.save(update_fields=['p_views'])
 
     class Meta:
         ordering = ['-created_time', 'title']
