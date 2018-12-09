@@ -10,7 +10,7 @@ def index(request):
     :param request:
     :return:
     """
-    post_list = Post.objects.all().order_by('-created_time')
+    post_list = Post.objects.all()# .order_by('-created_time')
     return render(request, 'blog/index.html', context={'post_list': post_list,})
 
 
@@ -22,6 +22,8 @@ def detail(request, pk):
     :return:
     """
     post = get_object_or_404(Post, pk=pk)
+    # 阅读量+1
+    post.increase_views()
     # 支持markdown
     post.body = markdown.markdown(post.body,
                                   extensions=[
