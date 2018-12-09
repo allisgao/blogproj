@@ -9,7 +9,7 @@ class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
-
+    paginate_by = 3
 
 # def detail(request, pk):
 #     """
