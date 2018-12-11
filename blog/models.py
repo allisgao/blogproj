@@ -28,8 +28,8 @@ class Post(models.Model):
     # 正文
     body = models.TextField()
     # 时间，创建时间和修改时间
-    created_time = models.DateTimeField(default=timezone.now())
-    modified_time = models.DateTimeField(default=timezone.now())
+    created_time = models.DateTimeField()
+    modified_time = models.DateTimeField()
     # 文章摘要
     excerpt = models.CharField(max_length=200, blank=True)
     # 分类和标签。这里，规定一篇文章只能有一个分类，但可以有多个标签。
