@@ -213,7 +213,11 @@ class PostDetailView(DetailView):
         return context
 
 
-class ArchivesView(IndexView):
+class ArchivesView(ListView):
+    model = PostDetailView
+    template_name = 'blog/index.html'
+    context_object_name = 'post_list'
+
     def get_queryset(self):
         year = self.kwargs.get('years')
         month = self.kwargs.get('month')

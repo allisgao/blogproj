@@ -3,6 +3,8 @@
 
 from ..models import Post, Category
 from django import template
+from django.db.models.aggregates import Count
+from blog.models import Category
 
 register = template.Library()
 
@@ -30,4 +32,5 @@ def get_categories():
     # 分类模板标签
     :return:
     """
-    return Category.objects.all()
+    return Category.objects.annotate(num_posts=Count('post')).filter(num_posts__gt=0)
+
