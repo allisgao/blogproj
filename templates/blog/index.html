@@ -29,6 +29,7 @@
                     <div class="no-post">暂时还没有文章发布！</div>
                 {% endfor %}
 {# 分页 #}
+    <center>
     {% if is_paginated %}
     <div class="pagination">
       {% if first %}
@@ -56,4 +57,5 @@
       {% endif %}
     </div>
     {% endif %}
+    </center>
 {% endblock main %}
