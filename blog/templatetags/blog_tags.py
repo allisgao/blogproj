@@ -15,7 +15,7 @@ def get_recent_posts(num=5):
     :param num:
     :return:
     """
-    return Post.objects.all().order_by('created_time')[:num]
+    return Post.objects.all().order_by('-created_time')[:num]
 
 @register.simple_tag
 def archives():
@@ -36,5 +36,4 @@ def get_categories():
 @register.simple_tag
 def get_tags():
     return Tag.objects.annotate(num_posts=Count('post')).filter(num_posts__gt=0)
-
 
