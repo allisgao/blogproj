@@ -208,20 +208,22 @@ class PostDetailView(DetailView):
         comment_list = self.object.comment_set.all()
         context.update({
             'form': form,
-            'commen_list': comment_list
+            'comment_list': comment_list
         })
         return context
 
 
 class ArchivesView(ListView):
-    model = PostDetailView
+    model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
 
     def get_queryset(self):
-        year = self.kwargs.get('years')
+        year = self.kwargs.get('year')
         month = self.kwargs.get('month')
-        return super(ArchivesView, self).get_queryset().filter(created_time__year=year,created_time__month=month)
+        return super(ArchivesView, self).get_queryset().filter(created_time__year=year,
+                                                               created_time__month=month
+                                                               )
 
 
 # class CategoryView(ListView):
