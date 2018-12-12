@@ -28,7 +28,7 @@
                 {% empty %}
                     <div class="no-post">暂时还没有文章发布！</div>
                 {% endfor %}
-
+{# 分页 #}
     {% if is_paginated %}
     <div class="pagination">
       {% if first %}
@@ -42,7 +42,8 @@
             <a href="?page={{ i }}">{{ i }}</a>
         {% endfor %}
       {% endif %}
-        <a class="current-page" href="?page={{ page_obj.number }}" >{{ page_obj.number }}</a>      {% if right %}
+        <a class="current-page" href="?page={{ page_obj.number }}" >{{ page_obj.number }}</a>
+        {% if right %}
         {% for i in right %}
             <a href="?page={{ i }}">{{ i }}</a>
         {% endfor %}
