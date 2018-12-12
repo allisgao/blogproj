@@ -9,7 +9,7 @@ class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
-    paginate_by = 10
+    paginate_by = 5
 
     # 分页，采用'1 ... 3 4 5 6 【7】 8 9 10 11 ... 100'这种显示方式
     def get_context_data(self, **kwargs):
@@ -144,34 +144,6 @@ class IndexView(ListView):
         return data
 
 
-
-# def detail(request, pk):
-#     """
-#     # 详细页，即点开可以查看博客内容
-#     :param request:
-#     :param pk:
-#     :return:
-#     """
-#     post = get_object_or_404(Post, pk=pk)
-#     # 阅读量+1
-#     post.increase_views()
-#     # 支持markdown
-#     post.body = markdown.markdown(post.body,
-#                                   extensions=[
-#                                       'markdown.extensions.extra',
-#                                       'markdown.extensions.codehilite',
-#                                       'markdown.extensions.toc',
-#                                   ])
-#     form = CommentForm()
-#     comment_list = post.comment_set.all()
-#     context = {
-#         'post': post,
-#         'form': form,
-#         'comment_list': comment_list,
-#     }
-#     return render(request, 'blog/detail.html', context=context)
-
-
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/detail.html'
@@ -213,10 +185,10 @@ class PostDetailView(DetailView):
         return context
 
 
-class ArchivesView(ListView):
-    model = Post
-    template_name = 'blog/index.html'
-    context_object_name = 'post_list'
+class ArchivesView(IndexView):
+    # model = Post
+    # template_name = 'blog/index.html'
+    # context_object_name = 'post_list'
 
     def get_queryset(self):
         year = self.kwargs.get('year')
@@ -226,10 +198,6 @@ class ArchivesView(ListView):
                                                                )
 
 
-# class CategoryView(ListView):
-#     model = Post
-#     template_name = 'blog/index.html'
-#     context_object_name = 'post_list'
 class CategoryView(IndexView): # 这里，为了节省代码，继承了IndexView
 
     def get_queryset(self):
