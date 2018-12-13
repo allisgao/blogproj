@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tqr_abwcpfg0vcwy#sm6g5jx7kxj%&s6r+3#dhkc#rv(p1@1v4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.cloxk.com']
 
 
 # Application definition
@@ -134,3 +134,5 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+# 为了能够方便地让Nginx 处理这些静态文件的请求，把项目中的全部静态文件收集到django项目根目录下的static
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
