@@ -135,4 +135,8 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 # 为了能够方便地让Nginx 处理这些静态文件的请求，把项目中的全部静态文件收集到django项目根目录下的static
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# 开发环境中，STATIC_ROOT没有生效，所以用的下面这个，要以元组的形式添加
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR, 'static'),
+)
