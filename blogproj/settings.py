@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tqr_abwcpfg0vcwy#sm6g5jx7kxj%&s6r+3#dhkc#rv(p1@1v4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.cloxk.com']
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'comments',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -89,17 +90,6 @@ DATABASES = {
         # 'TEST': {
         #     'NAME': 'test_blogproj',
         # }
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'YOUR_MYSQL_ADDR',
-        'NAME': 'YOUR_DB_NAME', # 'blogproj',
-        'USER': 'YOUR_DB_USER' , # 'blogproj',
-        'PASSWORD': 'YOUR_DB_PASSWD', # 'blogproj!@#',
-        'TEST': {
-            'NAME': 'test_blogproj',
-        }
-
     }
 }
 
